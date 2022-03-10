@@ -1,5 +1,14 @@
+from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication
+
 def main():
-    pass
+    Form, Window = uic.loadUiType("qtFiles\qtMain.ui")
+    app = QApplication([])
+    window = Window()
+    form = Form()
+    form.setupUi(window)
+    window.show()
+    app.exec_()
 
 # точка входа в проект
 # не писать ничего снизу этого файла
