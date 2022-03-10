@@ -1,52 +1,393 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>MainObject</class>
+ <widget class="QMainWindow" name="MainObject">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1024</width>
+    <height>720</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>720</height>
+   </size>
+  </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Определение закона распределения вероятностей по выборке</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="cssInjectionLabel">
+   <widget class="QComboBox" name="lawComboBox">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>40</y>
-      <width>451</width>
-      <height>91</height>
+      <x>796</x>
+      <y>190</y>
+      <width>211</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>20</pointsize>
-      <weight>75</weight>
-      <italic>false</italic>
-      <bold>true</bold>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <item>
+     <property name="text">
+      <string>StudentT (p1)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>FRatio (p1,p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Normal (p1,p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Exponential (p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>ChiSquare (p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Uniform (p1,p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Gamma (p2,p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>WeibullDistribution (p2,p2)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>BetaDistribution(p2,p2)</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="lineEditP1">
+    <property name="geometry">
+     <rect>
+      <x>796</x>
+      <y>240</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	padding-left: 20px;
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>p1 ...</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditP2">
+    <property name="geometry">
+     <rect>
+      <x>796</x>
+      <y>290</y>
+      <width>211</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLineEdit {
+	padding-left: 20px;
+}</string>
+    </property>
+    <property name="placeholderText">
+     <string>p2 ...</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>796</x>
+      <y>350</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Клуб любителей CSS-инъекций</string>
+     <string>Перебрать</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="diagramButton">
+    <property name="geometry">
+     <rect>
+      <x>796</x>
+      <y>400</y>
+      <width>211</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>12</pointsize>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Построить гистограмму</string>
+    </property>
+    <property name="autoExclusive">
+     <bool>false</bool>
+    </property>
+    <property name="autoDefault">
+     <bool>false</bool>
+    </property>
+    <property name="default">
+     <bool>false</bool>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frameRight">
+    <property name="geometry">
+     <rect>
+      <x>779</x>
+      <y>-51</y>
+      <width>261</width>
+      <height>771</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(115, 115, 115);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="settingsLabel">
+     <property name="geometry">
+      <rect>
+       <x>18</x>
+       <y>190</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>24</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>НАСТРОЙКИ</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frameLeft">
+    <property name="geometry">
+     <rect>
+      <x>-60</x>
+      <y>-30</y>
+      <width>841</width>
+      <height>751</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(200, 200, 200);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>30</y>
+       <width>781</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(115, 115, 115);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frameGistagram">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>139</y>
+       <width>741</width>
+       <height>361</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+    <widget class="QLabel" name="titleLabel_2">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>510</y>
+       <width>371</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>28</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>ХАРАКТЕРИСТИКИ</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="titleLabel">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>90</y>
+       <width>301</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Times New Roman</family>
+       <pointsize>28</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>ГИСТОГРАММА</string>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frameGistagram_2">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>560</y>
+       <width>741</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 20px;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+    </widget>
+   </widget>
+   <zorder>frameLeft</zorder>
+   <zorder>frameRight</zorder>
+   <zorder>lawComboBox</zorder>
+   <zorder>lineEditP1</zorder>
+   <zorder>lineEditP2</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>diagramButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1024</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="addFileAction"/>
+   </widget>
+   <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="addFileAction">
+   <property name="text">
+    <string>Добавить</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
